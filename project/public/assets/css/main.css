@@ -3,8 +3,16 @@
 }
 .h1 {
     text-shadow: 3px 2px 1px grey;
-    font-size: 40px;
     color: rgb(8, 0, 0);
+}
+
+.navbar-inverse {
+    font-size:18px;
+    color: rgb(8, 0, 0);
+}
+
+.navbar-verse {
+    font-size:40px;
 }
 
 .div {

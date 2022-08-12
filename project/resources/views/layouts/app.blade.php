@@ -39,9 +39,11 @@
                             width="60" height="50">
                     </a>
                 </nav>
-                <h1 class="navbar-brand" href="{{ url('') }}">
-                    {{ config('app.name') }}
-                </h1>
+                <a>
+                    <h1 class="navbar-verse " href="{{ url('') }}">
+                        {{ config('app.name') }}
+                    </h1>
+                </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                     data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
                     aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
@@ -59,20 +61,20 @@
                         <!-- Authentication Links -->
                         @guest
                         @if (Route::has('login'))
-                        <li class="nav-item">
+                        <li class="navbar-inverse">
                             <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
                         </li>
                         @endif
 
                         @if (Route::has('register'))
-                        <li class="nav-item">
+                        <li class="navbar-inverse">
                             <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
                         </li>
                         @endif
                         @else
                         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                             <ul class="nav navbar-nav">
-                                <li class="dropdown">
+                                <li class="nav-item">
                                     <!-- <li class="nav-item dropdown"> -->
                                     <!-- <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button"
                                         data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
@@ -98,7 +100,8 @@
                                     <!-- <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown"> -->
                                     <!-- </li> -->
                                     <ul>
-                                        <a href="{{ route('logout') }}"
+                                        <a style="text-decoration:none" class="navbar-inverse"
+                                            href="{{ route('logout') }}"
                                             onclick="event.preventDefault(); document.getElementById('frm-logout').submit();">
                                             Logout
                                         </a>
