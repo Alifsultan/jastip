@@ -11,8 +11,8 @@
     <title>Website Jastip</title>
 
     <!-- Fonts -->
-    <!-- <link rel="dns-prefetch" href="//fonts.gstatic.com"> -->
-    <!-- <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet"> -->
+    <link rel="dns-prefetch" href="//fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
         integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -39,11 +39,9 @@
                             width="60" height="50">
                     </a>
                 </nav>
-                <div>
-                    <a class="navbar-brand" href="{{ url('') }}">
-                        {{ config('app.name') }}
-                    </a>
-                </div>
+                <h1 class="navbar-brand" href="{{ url('') }}">
+                    {{ config('app.name') }}
+                </h1>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                     data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
                     aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
@@ -72,13 +70,21 @@
                         </li>
                         @endif
                         @else
-                        <li class="nav-item dropdown">
+                        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                            <ul class="nav navbar-nav">
+                                <li class="dropdown">
+                                    <!-- <li class="nav-item dropdown"> -->
+                                    <!-- <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button"
+                                        data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+                                        v-pre>{{ Auth::user()->name }}
+                                        <span class="caret"></span></a> -->
+                                    <!-- <li class="nav-item dropdown">
                             <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
                                 data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                 {{ Auth::user()->name }}
-                            </a>
+                            </a> -->
 
-                            <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                                    <!-- <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                                 <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
                                     {{ __('Logout') }}
@@ -87,8 +93,24 @@
                                 <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                                     @csrf
                                 </form>
-                            </div>
-                        </li>
+                            </div> -->
+                                    <!-- <li class="nav-item dropdown"> -->
+                                    <!-- <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown"> -->
+                                    <!-- </li> -->
+                                    <ul>
+                                        <a href="{{ route('logout') }}"
+                                            onclick="event.preventDefault(); document.getElementById('frm-logout').submit();">
+                                            Logout
+                                        </a>
+                                        <form id="frm-logout" action="{{ route('logout') }}" method="POST"
+                                            style="display: none;">
+                                            {{ csrf_field() }}
+                                        </form>
+                                    </ul>
+                                    <!-- </div> -->
+                                </li>
+                            </ul>
+                        </div>
                         @endguest
                     </ul>
                 </div>

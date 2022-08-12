@@ -1,6 +1,38 @@
 @-ms-viewport{
     width: device-width;
 }
+.h1 {
+    text-shadow: 3px 2px 1px grey;
+    font-size: 40px;
+    color: rgb(8, 0, 0);
+}
+
+.div {
+    box-shadow: 1px 7px 20px rgba(0, 0, 0, 0.1);
+    color: rgb(8, 0, 0);
+}
+
+.login {
+    margin: 100px auto;
+    width: 400px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    background: lightblue;
+}
+input[type=text], input[type=password] {
+    margin: 5px auto;
+    width: 100%;
+    padding: 10px;
+}
+input[type=submit] {
+    float: right;
+    padding: 5px;
+    width: 90px;
+    border: 1px solid #fff;
+    color: #fff;
+    background: red;
+    cursor: pointer;
+}
 
 html,body
 {
