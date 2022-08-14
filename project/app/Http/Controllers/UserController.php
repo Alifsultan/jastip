@@ -41,6 +41,22 @@ class UserController extends Controller
         $data['title'] = 'Login';
         return view('user/login', $data);
     }
+    public function ups()
+    {
+        $data['title'] = 'Ups';
+        return view('user/ups', $data);
+    }
+
+
+    // public function authenticated(Request $request, $user)
+    // {
+    //     if ($user->hasRole('staff')) {
+    //         return redirect()->route('\staff');
+    //     }else if ($user->hasRole('kurir')) {
+    //         return redirect()->route('\kurir');
+    //     }
+    //     return redirect()->route('\customer');    
+    // }
 
     public function login_action(Request $request)
     {

@@ -40,7 +40,7 @@
                     </a>
                 </nav>
                 <a>
-                    <h1 class="navbar-verse " href="{{ url('') }}">
+                    <h1 class="navbar-verse" href="{{ url('') }}">
                         {{ config('app.name') }}
                     </h1>
                 </a>
@@ -58,6 +58,7 @@
 
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ms-auto">
+
                         <!-- Authentication Links -->
                         @guest
                         @if (Route::has('login'))
@@ -72,44 +73,27 @@
                         </li>
                         @endif
                         @else
-                        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                            <ul class="nav navbar-nav">
-                                <li class="nav-item">
-                                    <!-- <li class="nav-item dropdown"> -->
-                                    <!-- <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button"
-                                        data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
-                                        v-pre>{{ Auth::user()->name }}
-                                        <span class="caret"></span></a> -->
-                                    <!-- <li class="nav-item dropdown">
-                            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
-                                data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                {{ Auth::user()->name }}
-                            </a> -->
-
-                                    <!-- <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                    {{ __('Logout') }}
-                                </a>
-
-                                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                    @csrf
-                                </form>
-                            </div> -->
-                                    <!-- <li class="nav-item dropdown"> -->
-                                    <!-- <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown"> -->
-                                    <!-- </li> -->
-                                    <ul>
-                                        <a style="text-decoration:none" class="navbar-inverse"
-                                            href="{{ route('logout') }}"
-                                            onclick="event.preventDefault(); document.getElementById('frm-logout').submit();">
-                                            Logout
-                                        </a>
-                                        <form id="frm-logout" action="{{ route('logout') }}" method="POST"
-                                            style="display: none;">
-                                            {{ csrf_field() }}
-                                        </form>
-                                    </ul>
+                        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                            <ul class="navbar-nav ms-auto">
+                                <li class="navbar-inverse">
+                                    <a class="nav-link" aria-current="page" href="{{url('staff')}}">Halaman Staff</a>
+                                </li>
+                                <li class="navbar-inverse">
+                                    <a class="nav-link" aria-current="page" href="{{url('kurir')}}">Halaman Kurir</a>
+                                </li>
+                                <li class="navbar-inverse">
+                                    <a class="nav-link" aria-current="page" href="{{url('customer')}}">Halaman
+                                        Customer</a>
+                                </li>
+                                <li class="navbar-inverse">
+                                    <a style="text-decoration:none" class="nav-link" href="{{ route('logout') }}"
+                                        onclick="event.preventDefault(); document.getElementById('frm-logout').submit();">
+                                        Logout
+                                    </a>
+                                    <form class="nav-link" id="frm-logout" action="{{ route('logout') }}" method="POST"
+                                        style="text-decoration: none;">
+                                        {{ csrf_field() }}
+                                    </form>
                                     <!-- </div> -->
                                 </li>
                             </ul>

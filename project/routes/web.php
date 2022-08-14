@@ -38,3 +38,17 @@ Route::get('password', [UserController::class, 'password'])->name('password');
 Route::post('password', [UserController::class, 'password_action'])->name('password.action');
 Route::post('logout', [UserController::class, 'logout'])->name('logout');
 // Route::get('logout', 'UserController@logout');
+// Route::get('staff-page', function() {
+//     return 'Halaman untuk Staff';
+// })->middleware('role:staff')->name('staff');
+Route::get('staff', function () { return view('/page/staff'); })->middleware('checkRole:staff');
+Route::get('kurir', function () { return view('/page/kurir'); })->middleware(['checkRole:kurir,staff']);
+Route::get('customer', function () { return view('/page/customer'); })->middleware(['checkRole:customer,staff']);
+Route::get('ups', [UserController::class, 'ups'])->name('ups');
+// Route::get('kurir-page', function() {
+//     return 'Halaman untuk Kurir';
+// })->middleware('role:kurir')->name('kurir');
+
+// Route::get('customer-page', function() {
+//     return 'Halaman untuk Customer';
+// })->middleware('role:customer')->name('customer');
