@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\staffController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Auth\LoginController;
@@ -37,18 +38,48 @@ Route::post('login', [UserController::class, 'login_action'])->name('login.actio
 Route::get('password', [UserController::class, 'password'])->name('password');
 Route::post('password', [UserController::class, 'password_action'])->name('password.action');
 Route::post('logout', [UserController::class, 'logout'])->name('logout');
-// Route::get('logout', 'UserController@logout');
-// Route::get('staff-page', function() {
-//     return 'Halaman untuk Staff';
-// })->middleware('role:staff')->name('staff');
-Route::get('staff', function () { return view('/page/staff'); })->middleware('checkRole:staff');
-Route::get('kurir', function () { return view('/page/kurir'); })->middleware(['checkRole:kurir,staff']);
-Route::get('customer', function () { return view('/page/customer'); })->middleware(['checkRole:customer,staff']);
-Route::get('ups', [UserController::class, 'ups'])->name('ups');
-// Route::get('kurir-page', function() {
-//     return 'Halaman untuk Kurir';
-// })->middleware('role:kurir')->name('kurir');
 
-// Route::get('customer-page', function() {
-//     return 'Halaman untuk Customer';
-// })->middleware('role:customer')->name('customer');
+// Route::get('staff', function () { return view('/page/staff'); })->middleware('checkRole:staff');
+Route::get('kurir', function () { return view('/page/kurir'); })->middleware(['checkRole:kurir,staff']);
+Route::get('ups', [UserController::class, 'ups'])->name('ups');
+Route::get('index', [staffController::class, 'index'])->name('index');
+Route::get('kurir', [staffController::class, 'kurir'])->name('kurir');
+Route::get('create', [staffController::class, 'create'])->name('create');
+Route::get('kirim', [staffController::class, 'kirim'])->name('kirim');
+Route::post('store', [staffController::class, 'store'])->name('store');
+Route::post('edit', [staffController::class, 'edit'])->name('edit');
+Route::post('update', [staffController::class, 'update'])->name('update');
+Route::post('destroy', [staffController::class, 'destroy'])->name('destroy');
+Route::group(['middleware'=>'checkRole:staff'], function(){
+    Route::get('staff', function () { 
+        return view('/page/staff');
+    });
+    Route::resource('staff',staffController::class)->names([
+        'index'=>'index',
+        'create'=>'create',
+        'store'=>'store',
+        'edit'=>'edit',
+        'update'=>'update',
+        'destroy'=>'destroy',
+        // 'kirim'=>'kirim',
+        // 'kirimkan'=>'kirimkan',
+        // 'kurir'=>'kurir',
+    ]);
+    Route::resource('/staff', \App\Http\Controllers\staffController::class);
+});
+
+// Route::group(['middleware'=>'checkRole:kurir,staff'], function(){
+//     Route::get('kurir', function () { 
+//         return view('/page/kurir');
+//     });
+//     Route::resource('kurir',kurirController::class)->names([
+//         'index'=>'index',
+//         'edit'=>'edit',
+//         'update'=>'update',
+//         // 'destroy'=>'destroy',
+//     ]);
+//     Route::resource('/kurir', \App\Http\Controllers\kurirController::class);
+// });
+// Route::get('index', [kurirController::class, 'index'])->name('index');
+// Route::post('edit', [kurirController::class, 'edit'])->name('edit');
+// Route::post('update', [kurirController::class, 'update'])->name('update');

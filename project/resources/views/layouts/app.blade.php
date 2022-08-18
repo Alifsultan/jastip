@@ -82,10 +82,6 @@
                                     <a class="nav-link" aria-current="page" href="{{url('kurir')}}">Halaman Kurir</a>
                                 </li>
                                 <li class="navbar-inverse">
-                                    <a class="nav-link" aria-current="page" href="{{url('customer')}}">Halaman
-                                        Customer</a>
-                                </li>
-                                <li class="navbar-inverse">
                                     <a style="text-decoration:none" class="nav-link" href="{{ route('logout') }}"
                                         onclick="event.preventDefault(); document.getElementById('frm-logout').submit();">
                                         Logout
