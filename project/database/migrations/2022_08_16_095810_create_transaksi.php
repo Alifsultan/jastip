@@ -17,12 +17,8 @@ return new class extends Migration
             $table->increments('id');
             $table->integer('id_kategori');
             $table->integer('id_pengiriman');
-            $table->string('nama_penerima', 50);
-            $table->integer('no_hp', 50);
-            $table->string('alamat', 255);
             $table->string('nama_barang', 100);
-            $table->integer('harga_barang', 100);
-            $table->integer('total_harga');
+            $table->integer('total');
             $table->timestamps();
         });
     }

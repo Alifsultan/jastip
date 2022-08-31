@@ -104,22 +104,10 @@ class staffController extends Controller
         return view('/page/kurir',compact('staff'))->with('i');
     }
     
-    public function kirim(staff $staff)
+    public function destroyer($id)
     {
-        return view('/page/kirim',compact('staff'));
-    }
-    public function kirimkan(Request $request , staff $staff)
-    {
-        $request->validate([
-            'nama' => 'required',
-            'no_hp' => 'required',
-            'alamat_kirim' => 'required',
-            'nama_makanan' => 'required',
-            'harga_barjas' => 'required',
-            'pengiriman' => 'required',
-            'total_harga' => 'required',
-        ]);
-        staff::create($request->all());
-        return redirect()->route('kurir')->with('success','Data user berhasil di input');
+        $staff = staff::find($id); 
+        $staff->delete();
+        return redirect()->route('kurir')->with('success','Data user berhasil dihapus');
     }
 }

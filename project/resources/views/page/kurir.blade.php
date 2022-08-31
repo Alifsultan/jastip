@@ -36,6 +36,15 @@
         <td>{{ $st->alamat_kirim }}</td>
         <td>{{ $st->nama_makanan }}</td>
         <td>{{ $st->pengiriman }}</td>
+        <td>
+            <form method="POST" class="d-inline"
+                onsubmit="return confirm('apakah anda yakin telah mengirimkan paketnya?')"
+                action="{{route('destroyer', [$st->id])}}">
+                @csrf
+                <input type="hidden" value="DELETE" name="_method">
+                <input type="submit" value="Selesaikan" class="btn btn-danger btn-sm">
+            </form>
+        </td>
     </tr>
     @endforeach
 </table>

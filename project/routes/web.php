@@ -50,6 +50,7 @@ Route::post('store', [staffController::class, 'store'])->name('store');
 Route::post('edit', [staffController::class, 'edit'])->name('edit');
 Route::post('update', [staffController::class, 'update'])->name('update');
 Route::post('destroy', [staffController::class, 'destroy'])->name('destroy');
+Route::delete('{id}/destroyer', [staffController::class, 'destroyer'])->name('destroyer');
 Route::group(['middleware'=>'checkRole:staff'], function(){
     Route::get('staff', function () { 
         return view('/page/staff');
@@ -61,24 +62,19 @@ Route::group(['middleware'=>'checkRole:staff'], function(){
         'edit'=>'edit',
         'update'=>'update',
         'destroy'=>'destroy',
-        // 'kirim'=>'kirim',
-        // 'kirimkan'=>'kirimkan',
-        // 'kurir'=>'kurir',
     ]);
     Route::resource('/staff', \App\Http\Controllers\staffController::class);
+    // Route::post('destroyer', [staffController::class, 'destroyer'])->name('destroyer');
 });
 
 // Route::group(['middleware'=>'checkRole:kurir,staff'], function(){
 //     Route::get('kurir', function () { 
 //         return view('/page/kurir');
 //     });
-//     Route::resource('kurir',kurirController::class)->names([
-//         'index'=>'index',
-//         'edit'=>'edit',
-//         'update'=>'update',
-//         // 'destroy'=>'destroy',
+//     Route::resource('staff',staffController::class)->names([
+//         'destroyer'=>'destroyer',
 //     ]);
-//     Route::resource('/kurir', \App\Http\Controllers\kurirController::class);
+//     Route::resource('/staff', \App\Http\Controllers\staffController::class);
 // });
 // Route::get('index', [kurirController::class, 'index'])->name('index');
 // Route::post('edit', [kurirController::class, 'edit'])->name('edit');
