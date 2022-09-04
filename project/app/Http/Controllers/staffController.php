@@ -110,4 +110,12 @@ class staffController extends Controller
         $staff->delete();
         return redirect()->route('kurir')->with('success','Data user berhasil dihapus');
     }
+    public function changeStatus(Request $request)
+    {
+        $staff = staff::find($request->id);
+        $staff->status = $request->status;
+        $staff->save();
+  
+        return response()->json(['success'=>'Status change successfully.']);
+    }
 }

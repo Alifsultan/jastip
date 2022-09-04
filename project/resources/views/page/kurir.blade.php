@@ -37,6 +37,11 @@
         <td>{{ $st->nama_makanan }}</td>
         <td>{{ $st->pengiriman }}</td>
         <td>
+            <input data-id="{{$st->id}}" class="toggle-class" type="checkbox" data-onstyle="success"
+                data-offstyle="danger" data-toggle="toggle" data-on="SUDAH DIKIRIM" data-off="BELUM DIKIRIM"
+                {{ $st->status ? 'checked' : '' }}>
+        </td>
+        <!-- <td>
             <form method="POST" class="d-inline"
                 onsubmit="return confirm('apakah anda yakin telah mengirimkan paketnya?')"
                 action="{{route('destroyer', [$st->id])}}">
@@ -44,9 +49,30 @@
                 <input type="hidden" value="DELETE" name="_method">
                 <input type="submit" value="Selesaikan" class="btn btn-danger btn-sm">
             </form>
-        </td>
+        </td> -->
     </tr>
     @endforeach
+    <script>
+    $(function() {
+        $('.toggle-class').change(function() {
+            var status = $(this).prop('checked') == true ? 1 : 0;
+            var id = $(this).data('id');
+
+            $.ajax({
+                type: "GET",
+                dataType: "json",
+                url: '/changeStatus',
+                data: {
+                    'status': status,
+                    'id': id
+                },
+                success: function(data) {
+                    console.log(data.success)
+                }
+            });
+        })
+    })
+    </script>
 </table>
 
 

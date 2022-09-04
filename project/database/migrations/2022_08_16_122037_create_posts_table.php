@@ -22,6 +22,7 @@ return new class extends Migration
             $table->integer('harga_barjas');
             $table->string('pengiriman', 100);
             $table->integer('total_harga');
+            $table->integer('status', ['0', '1'])->default('0');
             $table->timestamps();
         });
     }
