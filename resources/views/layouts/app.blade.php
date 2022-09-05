@@ -80,6 +80,9 @@
                         @else
                         <div class="collapse navbar-collapse" id="navbarSupportedContent">
                             <ul class="navbar-nav ms-auto">
+                            <li class="navbar-inverse">
+                                    <a class="nav-link" aria-current="page" href="{{url('barang')}}">Halaman Barang</a>
+                                </li>
                                 <li class="navbar-inverse">
                                     <a class="nav-link" aria-current="page" href="{{url('staff')}}">Halaman Staff</a>
                                 </li>
